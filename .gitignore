@@ -1,0 +1,45 @@
+
+# Data files (too larget for git)
+omop_synthea/*.parquet
+omop_synthea/patient_sequence/
+omop_synthea/dataset_prepared/
+omop_synthea/cehrgpt/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+venv/
+.venv/
+
+# Conda
+.conda/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Credentials (never commit!)
+.env
+*credentials*
+*password*
+
+# Logs
+*.log
+logs/
+
+# Model checkpoints (large files)
+*.pt
+*.pth
+*.bin
+checkpoint-*/
+
+
