@@ -29,17 +29,23 @@ tables = [
     "concept_relationship"
 ]
 
-# Export each table
+# Export each table as a FOLDER (Spark-compatible format)
 for table in tables:
     print(f"Exporting {DB_SCHEMA}.{table}...")
     query = f"SELECT * FROM {DB_SCHEMA}.{table}"
     try:
         df = pd.read_sql(query, engine)
-        output_path = os.path.join(output_dir, f"{table}.parquet")
-        df.to_parquet(output_path, index=False)
-        print(f"   Saved {len(df):,} rows to {output_path}")
-    except Exception as e:
-        print(f"   Error exporting {table}: {e}")
 
-print("\n Export complete!")
+        # Create folder for the table
+        table_folder = os.path.join(output_dir, table)
+        os.makedirs(table_folder, exist_ok=True)
+
+        # Save parquet inside the folder
+        output_path = os.path.join(table_folder, "part-00000.parquet")
+        df.to_parquet(output_path, index=False)
+        print(f"  ✓ Saved {len(df):,} rows to {table_folder}/")
+    except Exception as e:
+        print(f"  ✗ Error exporting {table}: {e}")
+
+print("\n✅ Export complete!")
 print(f"\nFiles saved to: {os.path.abspath(output_dir)}")
