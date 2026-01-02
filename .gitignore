@@ -1,9 +1,5 @@
-
-# Data files (too larget for git)
-omop_synthea/*.parquet
-omop_synthea/patient_sequence/
-omop_synthea/dataset_prepared/
-omop_synthea/cehrgpt/
+# Data and model files (large, regeneratable)
+omop_synthea/
 
 # Python
 __pycache__/
@@ -39,7 +35,5 @@ logs/
 # Model checkpoints (large files)
 *.pt
 *.pth
-*.bin
+*.safetensors
 checkpoint-*/
-
-
