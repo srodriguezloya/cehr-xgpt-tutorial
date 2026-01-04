@@ -1,0 +1,3 @@
+[submodule "cehrgpt_tutorials"]
+	path = cehrgpt_tutorials
+	url = https://github.com/knatarajan-lab/cehrgpt_tutorials.git
